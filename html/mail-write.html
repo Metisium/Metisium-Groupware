@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/simple-grid.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+  <link rel="stylesheet" type="text/css" href="../css/mail.css">
+  <link rel="stylesheet" type="text/css" href="../css/quill-emoji.css">
+  <style>
+    #editor-container {
+      overflow-y: none;
+      height: calc(100% - 2.9rem);
+    }
+  </style>
+
+  <link href="../css/quill.snow.css" rel="stylesheet">
+  <script src="../js/quill.min.js"></script>
+  
+  
+
+  <link rel="icon" type="image/svg+xml" href="../img/Wappen.svg">
+  <link rel="alternate icon" href="../img/Wappen.ico">
+  <link rel="mask-icon" href="../img/Wappen.svg" color="#CBD3D5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+  <title>Mail || Metisium</title>
+</head>
+<body>
+  <nav>
+    <ul class="vertical">
+      <li class="small-item"></li>
+      <li class="small-item"></li>
+      <li class="small-item"></li>
+      <li class="small-item"></li>
+      <li class="small-item last"></li>
+    </ul>
+  </nav>
+  <section id="folders">
+    <div id="userField">
+      <img class="round-image" height="50px" src="../img/Wappen.png"/>
+      <div class="textes">
+        <p>Robin Muster</p>
+        <p>Administrator</p>
+      </div>
+    </div>
+    <ul id="folder">
+      <li>
+        <span class="folder">Inbox (1)</span>
+        <ul class="nested">
+          <li><span>Max</span></li>
+          <li><span>Mix</span></li>
+          <li>
+            <span class="folder">Social</span>
+            <ul class="nested">
+              <li><span>Twitter</span></li>
+              <li><span>Instagram</span></li>
+              <li><span class="folder">GitHub</span>
+                <ul class="nested">
+                  <li><span>Issues</span></li>
+                  <li><span>Releases</span></li>
+                  <li><span>Depabot</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><span>Junk</span></li>
+          <li><span class="folder">Archieve</span>
+            <ul class="nested">
+              <li><span>2019</span></li>
+            </ul>
+          </li>
+          <li><span>Sent</span></li>
+          <li><span>Drafts</span></li>
+        </ul>
+      </li>
+    </ul>
+    <div id="view-switch">
+      <ul>
+        <li class="small-item">
+
+        </li>
+        <li class="small-item">
+
+        </li>
+        <li class="small-item">
+
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="mails">
+    <div id="search-mail">
+      <input type="text" class="search-input" placeholder="Search Mail">
+      <div class="line"></div>
+    </div>
+    <ul class="mail-list">
+      <li class="unread mail">
+        <div>
+          <p>Robin</p>
+          <span>Beispiel Email</span><br>
+          <span>Hallo Max,</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <main>
+    <div id="mail-head">
+      <img src="../img/Wappen.png" height="20px" class="round-image-sender">
+      <div class="sender-box">
+        <p class="sender-name">Robin Schleser</p>
+        <p class="sender-address">FROM: robinschleser@web.de</p>
+        <p class="reciever">CC: <span class="tooltip" data-tooltip="robinschleser@web.de">Robin Schleser;</span> robinschleser@web.de; robinschleser@web.de; robinschleser@web.de;</p>
+      </div>
+      <div id="mail-options">
+        <ul>
+          <li class="small-item-button">
+            <i class="fas fa-ellipsis-h fa-2x"></i>
+          </li>
+          <li class="small-item-button">
+            <i class="fas fa-angle-double-right fa-2x"></i>
+          </li>
+          <li class="small-item-button">
+            <i class="fas fa-reply-all fa-2x"></i>
+          </li>
+          <li class="small-item-button">
+            <i class="fas fa-reply fa-2x"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="mail-write">
+        <div id="editor-container"></div>
+    </div>
+  </main>
+  <script src="../js/quill-emoji.js"></script>
+  <script>
+
+    var toolbarOptions = {
+      container: [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        [{ 'header': 1 }, { 'header': 2 }],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'script': 'sub' }, { 'script': 'super' }],
+        [{ 'indent': '-1' }, { 'indent': '+1' }],
+        [{ 'direction': 'rtl' }],
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        [{ 'color': [] }, { 'background': [] }],
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+        ['clean'],
+        ['emoji'],
+        ['link', 'image', 'video']
+      ],
+      handlers: {
+        'emoji': function () {}
+      }
+    }
+
+    var quill = new Quill('#editor-container', {
+      placeholder: '...',
+      modules: {
+        "toolbar": toolbarOptions,
+        "emoji-toolbar": true,
+        "emoji-shortname": true,
+        "emoji-textarea": true
+      },
+      theme: 'snow'
+    });
+
+    var toggler = document.getElementsByClassName("folder");
+    var i;
+    
+    for (i = 0; i < toggler.length; i++) {
+      toggler[i].addEventListener("click", function() {
+        this.parentElement.querySelector(".nested").classList.toggle("active");
+        this.classList.toggle("folder-out");
+      });
+    }
+
+    var mailList = document.getElementsByClassName("mail");
+    var i;
+    
+    for (i = 0; i < mailList.length; i++) {
+      mailList[i].addEventListener("click", function(e) {
+        if(e.offsetX < 20 && !this.classList.contains("unread")) {
+          this.classList.toggle("unread");
+        }else {
+          this.classList.remove("unread");
+        }
+      });
+    }
+  
+    </script>
+
+
+
+
+
+</body>
+</html>

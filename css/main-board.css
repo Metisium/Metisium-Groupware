@@ -1,0 +1,133 @@
+#quick-access {
+  float: right;
+  width: 300px;
+  height: 100%;
+  background-color: var(--background-color);
+  position: relative;
+}
+
+#userField {
+  height: 12%;
+}
+
+#quick-access > ul {
+  height: calc(88% - 20px);
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+#quick-access > ul > li > a {
+  color: var(--blue)
+}
+
+#userField > .textes {
+  position: absolute;
+  top: calc(10% / 2 - 30px);
+  right: 80px;
+  text-align: right;
+}
+
+#userField > .textes > p:first-child {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+#userField > .textes > p:last-child {
+  font-size: 0.9rem;
+  color: var(--blue);
+  opacity: 0.7;
+  line-height: 1;
+}
+
+.line {
+  width: 100%;
+  border-bottom: 2px solid var(--secondary-color);
+  position: absolute;
+  top: 9%;
+}
+
+
+.round-image {
+  right: 20px;
+  position: absolute;
+  top: calc(10% / 2 - 30px);
+}
+
+main {
+  position: absolute;
+  width: calc(100% - 370px);
+  left: 70px;
+  top: 0;
+}
+
+#head > img {
+  position: absolute;
+  height: 60px;
+  top: 20px;
+  left: 20px;
+  width: auto;
+}
+
+.search-input {
+  text-align: center;
+  margin-top: 40px;
+  margin-left: 25%;
+}
+
+#app-navigation {
+  padding: 20px;
+}
+
+
+#app-navigation li {
+  display: inline-block;
+  margin: 0px 20px;
+  font-size: 1.3rem;
+  position: relative;
+  cursor: pointer;
+}
+
+#app-navigation li:first-child {
+  margin-left: 0px;
+}
+
+#app-navigation li:last-child {
+  margin: 0px;
+  color: var(--blue);
+  float: right;
+}
+
+#app-navigation ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 0;
+  width: 0%;
+  border-bottom: 4px solid var(--blue);
+  -webkit-transition: width 0.3s ease;
+  -o-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+
+#app-navigation ul li:hover a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 0;
+  width: 100%;
+  border-bottom: 4px solid var(--blue);
+}
+
+#app-navigation ul .selected a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 0;
+  width: 100%;
+  border-bottom: 4px solid var(--blue);
+}
+
+
