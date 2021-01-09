@@ -3,43 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../css/simple-grid.min.css">
-  <link rel="stylesheet" type="text/css" href="../css/theme.css">
-  <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
-  <link rel="stylesheet" type="text/css" href="../css/mail.css">
-  <link rel="stylesheet" type="text/css" href="../css/quill-emoji.css">
+  <link rel="stylesheet" type="text/css" href="/pubgroupware/css/mail.css">
+  <link rel="stylesheet" type="text/css" href="/pubgroupware/css/quill-emoji.css">
+  
+
+  <link href="../css/quill.snow.css" rel="stylesheet">
+  <script src="../js/quill.min.js"></script>
+  
+  <%- include('./../../dashboard/ejs/pages/head.ejs') %>
+  
   <style>
     #editor-container {
       overflow-y: none;
       height: calc(100% - 2.9rem);
     }
   </style>
-
-  <link href="../css/quill.snow.css" rel="stylesheet">
-  <script src="../js/quill.min.js"></script>
-  
-  
-
-  <link rel="icon" type="image/svg+xml" href="../img/Wappen.svg">
-  <link rel="alternate icon" href="../img/Wappen.ico">
-  <link rel="mask-icon" href="../img/Wappen.svg" color="#CBD3D5">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
-
-  <title>Mail || Metisium</title>
 </head>
 <body>
-  <nav>
-    <ul class="vertical">
-      <li class="small-item"></li>
-      <li class="small-item"></li>
-      <li class="small-item"></li>
-      <li class="small-item"></li>
-      <li class="small-item last"></li>
-    </ul>
-  </nav>
+  <%- include('./../../dashboard/ejs/pages/navigation.ejs') %>
   <section id="folders">
     <div id="userField">
-      <img class="round-image" height="50px" src="../img/Wappen.png"/>
+      <img class="round-image" height="50px" src="/pubdashboard/img/Wappen.png"/>
       <div class="textes">
         <p>Robin Muster</p>
         <p>Administrator</p>

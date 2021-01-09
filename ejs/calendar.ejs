@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./../../dashboard/ejs/pages/head.ejs') %>
+  <link rel="stylesheet" type="text/css" href="/pubgroupware/css/calendar.css">
+  <script src="/pubgroupware/js/calendar.js"></script>
+</head>
+<body onload="init()">
+  <%- include('./../../dashboard/ejs/pages/navigation.ejs') %>
+  <section id="quick-access">
+    <div id="userField">
+      <img class="round-image" height="50px" src="../pubdashboard/img/Wappen.png"/>
+      <div class="textes">
+        <p><%= user.name %></p>
+        <p><%= user.role %></p>
+        
+      </div>
+      <a class="logout" href="/api/auth/logout">Logout</a>
+      <div class="line"></div>
+    </div>
+    <ul>
+      <li style="padding-bottom: 10px;">
+        <h2>Todays events</h2>
+        <a id="time"></a>
+      </li>
+      <% for (var event in events) { %>
+        <li class="long-item event">
+          <a href="./calendar/today/<%= event %>"></a>
+          <h2><%= events[event].title.substring(0,20); %> <span class="timeStartEnd">(<%= events[event].start + " - " + events[event].end %>)</span></h2>
+          <p class="description"><%= events[event].description.substring(0,25); %>-</p>
+          <p class="description-line2"><%= events[event].description.substring(26,60); %></p>
+          <p><%= events[event].room.substring(0,40); %></p>
+          <img class="arrow" height="20px" src="../pubdashboard/img/moveicon.svg">
+        </li>
+      <% } %>
+    </ul>
+  </section>
+  <main data-animation="container">
+    <section id="head">
+      <img src="../pubdashboard/img/Wappen.svg" height="100px" />
+      <input type="text" class="search-input" placeholder="Search Hub">
+    </section>
+    <section id="app-navigation">
+      <ul>
+        <% for (let i = 0; i < (pages.length - 1); i++) { %>
+          <li <%= (selected === i ? 'class=selected' : '' ) %>>
+            <a href="<%= pages[i].href %>"><%= pages[i].name %></a>
+          </li>
+        <% } %>
+        <li <%= ((selected == pages.length - 1)  ? 'class=selected' : '' ) %>><a href="<%= pages[pages.length - 1].href %>"><%= pages[pages.length - 1].name %></a></li>
+      </ul>
+    </section>
+    <section id="app-content">
+      <div class="container">
+        <div class="headings">
+          <table class="calendar">
+            <thead>
+              <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <table class="calendar values">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="myCalendar">
+            
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <%- include('./../../dashboard/ejs/pages/script.ejs') %>
+  <script>
+    function showTime(){
+      var date = new Date();
+
+      var d = date.getDate();
+      var M = date.getMonth() + 1;
+      var y = date.getFullYear();
+
+      var h = date.getHours();
+      var m = date.getMinutes();
+      var s = date.getSeconds();
+      
+      d = (d < 10) ? "0" + d : d;
+      M = (M < 10) ? "0" + M : M;
+
+      h = (h < 10) ? "0" + h : h;
+      m = (m < 10) ? "0" + m : m;
+      s = (s < 10) ? "0" + s : s;
+      
+      var events = document.getElementsByClassName("event");
+      var times = document.getElementsByClassName("timeStartEnd");
+      for (var i in events) {
+        if(typeof times[i].innerText == 'string')  {
+
+          var timer = times[i].innerText.replace("(", "").replace(")", "").split(" - ");
+
+
+          var eventTimerStart = { h: parseInt(timer[0].split(":")[0]), m: parseInt(timer[0].split(":")[1]) };
+          var eventTimerStop = { h: parseInt(timer[1].split(":")[0]), m: parseInt(timer[1].split(":")[1]) };
+          
+
+          var eventStartDate = new Date();
+          eventStartDate.setHours(eventTimerStart.h);
+          eventStartDate.setMinutes(eventTimerStart.m);
+          var eventEndDate = new Date();
+
+          eventEndDate.setHours(eventTimerStop.h);
+          eventEndDate.setMinutes(eventTimerStop.m);
+
+          if(eventStartDate < date && eventEndDate > date) {
+            if(document.getElementsByClassName("event")[i] != undefined && document.getElementsByClassName("event")[i].style != undefined) {
+              document.getElementsByClassName("event")[i].style.backgroundColor = "rgb(70, 161, 222)";
+            }
+          } else {
+            if(document.getElementsByClassName("event")[i] != undefined && document.getElementsByClassName("event")[i].style != undefined && document.getElementsByClassName("event")[i].style.backgroundColor == "rgb(70, 161, 222)") {
+              document.getElementsByClassName("event")[i].style.backgroundColor = "rgb(34, 37, 39)";
+            }
+          }
+          
+        }
+      }
+
+      var time = d + "." + M + "." + y + " " + h + ":" + m + ":" + s;
+      document.getElementById("time").innerText = time;
+      document.getElementById("time").textContent = time;
+      
+      setTimeout(showTime, 1000); 
+    }
+
+    showTime();
+  </script>
+</body>
+</html>

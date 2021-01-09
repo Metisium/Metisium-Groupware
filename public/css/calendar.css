@@ -1,0 +1,106 @@
+
+
+.event {
+  height: 12%;
+  line-height: 80%;
+  opacity: 0.8;
+}
+
+.event > h2 {
+  text-align: left;
+  font-size: 1.9vh;
+  padding: 0;
+  margin-left: 10px;
+  padding-top: 10px;
+}
+
+.event > h2 > span {
+  float: right;
+  margin-right: 10px;
+  font-size: 1.7vh;
+  font-weight: 200;
+}
+
+.event > p {
+  text-align: left;
+  font-size: 1.7vh;
+  margin-left: 10px;
+  position: relative;
+  top: -1.5vh;
+}
+
+.event > .description {
+  top: 0.4vh;
+}
+
+.event > .description-line2 {
+  top: -0.8vh;
+}
+
+.headings {
+  position: fixed;
+  width: calc(100% - 380px);
+  color: var(--text);
+  z-index: 10;
+}
+
+.headings th {
+  background-color: var(--background-color);
+  padding: 10px 5px;
+}
+
+.calendar {
+  margin-left: 20px;
+  width: calc(100% - 40px);
+  table-layout: fixed;
+  
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+table, th, td {
+  border: 1px solid var(--secondary-color);
+  border-collapse: collapse;
+}
+
+thead > tr > th {
+  text-align: left;
+}
+
+tbody > tr > td {
+  text-align: left;
+  height: 20vh;
+  background-color: var(--third-color);
+  color: var(--text);
+  position: relative;
+  top: 37px;
+  z-index: 9;
+}
+
+tbody {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.week {
+  width: 5%;
+}
+
+.date {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  -webkit-user-select: none;        
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+td {
+  cursor: pointer;
+}
+
+td:hover {
+  background-color: var(--secondary-color);
+}

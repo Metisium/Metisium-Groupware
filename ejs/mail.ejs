@@ -1,33 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../css/simple-grid.min.css">
-  <link rel="stylesheet" type="text/css" href="../css/theme.css">
-  <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
-  <link rel="stylesheet" type="text/css" href="../css/mail.css">
-  <link rel="stylesheet" type="text/css" href="../css/quill-emoji.css">
-
-  <link rel="icon" type="image/svg+xml" href="../img/Wappen.svg">
-  <link rel="alternate icon" href="../img/Wappen.ico">
-  <link rel="mask-icon" href="../img/Wappen.svg" color="#CBD3D5">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
-  <title>Mail || Metisium</title>
+  <%- include('./../../dashboard/ejs/pages/head.ejs') %>
+  <link rel="stylesheet" type="text/css" href="/pubgroupware/css/main-board.css">
+  <link rel="stylesheet" type="text/css" href="/pubgroupware/css/mail.css">
+  <link rel="stylesheet" type="text/css" href="/pubgroupware/css/quill-emoji.css">
 </head>
 <body>
-  <nav>
-    <ul class="vertical">
-      <li class="small-item"></li>
-      <li class="small-item"></li>
-      <li class="small-item"></li>
-      <li class="small-item"></li>
-      <li class="small-item last"></li>
-    </ul>
-  </nav>
+  <%- include('./../../dashboard/ejs/pages/navigation.ejs') %>
   <section id="folders">
     <div id="userField">
-      <img class="round-image" height="50px" src="../img/Wappen.png"/>
+      <img class="round-image" height="50px" src="/pubdashboard/img/Wappen.png"/>
       <div class="textes">
         <p>Robin Muster</p>
         <p>Administrator</p>
@@ -67,13 +50,16 @@
     <div id="view-switch">
       <ul>
         <li class="small-item">
-
+          <a href="/gw/mail">Hallo</a>
+          <i data-feather="mail" class="icon"></i>
         </li>
         <li class="small-item">
-
+          <a href="/gw/calendar">Hallo</a>
+          <i data-feather="calendar" class="icon"></i>
         </li>
         <li class="small-item">
-
+          <a href="/gw/addressbook">Hallo</a>
+          <i data-feather="user" class="icon"></i>
         </li>
       </ul>
     </div>
@@ -95,7 +81,7 @@
   </section>
   <main>
     <div id="mail-head">
-      <img src="../img/Wappen.png" height="20px" class="round-image-sender">
+      <img src="/pubdashboard/img/Wappen.png" height="20px" class="round-image-sender">
       <div class="sender-box">
         <p class="sender-name">Max Muster</p>
         <p class="sender-address">FROM: mix.muster@muster.de</p>
@@ -104,16 +90,20 @@
       <div id="mail-options">
         <ul>
           <li class="small-item-button">
-            <i class="fas fa-ellipsis-h fa-2x"></i>
+            <a href="/">Hallo</a>
+            <i data-feather="more-horizontal" class="icon"></i>
           </li>
           <li class="small-item-button">
-            <i class="fas fa-angle-double-right fa-2x"></i>
+            <a href="/">Hallo</a>
+            <i data-feather="fast-forward" class="icon"></i>
           </li>
           <li class="small-item-button">
-            <i class="fas fa-reply-all fa-2x"></i>
+            <a href="/">Hallo</a>
+            <i data-feather="chevrons-left" class="icon"></i>
           </li>
           <li class="small-item-button">
-            <i class="fas fa-reply fa-2x"></i>
+            <a href="/">Hallo</a>
+            <i data-feather="chevron-left" class="icon"></i>
           </li>
         </ul>
       </div>
@@ -122,6 +112,9 @@
 		
     </div>
   </main>
+
+  <%- include('./../../dashboard/ejs/pages/script.ejs') %>
+
   <script>
     var toggler = document.getElementsByClassName("folder");
     var i;
